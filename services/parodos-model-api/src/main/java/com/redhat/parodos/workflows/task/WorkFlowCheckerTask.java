@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;
@@ -25,7 +25,7 @@ import com.redhat.parodos.workflows.work.WorkReport;
  * @author Luke Shannon (Github: lshannon)
  *
  */
-public interface WorkFlowChecker extends WorkFlowTask, Runnable  {
+public interface WorkFlowCheckerTask extends WorkFlowTask, Runnable  {
 	
 	/**
 	 * Method to check if a WorkFlow that is in a holding status, i.e: waiting for an external process to occur, has achieved its status and can trigger the next WorkFlow

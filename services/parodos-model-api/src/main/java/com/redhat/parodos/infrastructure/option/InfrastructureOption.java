@@ -56,7 +56,6 @@ public class InfrastructureOption {
 		this.displayName = builder.displayName;
 	}
 
-
 	public static class Builder {
 		// required
 		private String identifier;

@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows.task;
+package com.redhat.parodos.assessment;
 
 import com.redhat.parodos.infrastructure.option.InfrastructureOption;
+import com.redhat.parodos.workflows.task.WorkFlowTask;
 import lombok.Getter;
 
 /**

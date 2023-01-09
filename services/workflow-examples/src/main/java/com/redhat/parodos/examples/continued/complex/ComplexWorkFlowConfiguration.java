@@ -23,8 +23,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.redhat.parodos.examples.simple.LoggingWorkFlowTask;
 import com.redhat.parodos.infrastructure.option.InfrastructureOption;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowTask;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
 import com.redhat.parodos.workflows.workflow.ParallelFlow;
 import com.redhat.parodos.workflows.workflow.SequentialFlow;
 import com.redhat.parodos.workflows.workflow.WorkFlow;
@@ -141,12 +140,12 @@ public class ComplexWorkFlowConfiguration {
     //Start onboardingWorkFlowCheck Logic
     
     @Bean(name = "onboardingWorkFlowCheck")
-    MockApprovalWorkFlowChecker gateTwo() {
-    	return new MockApprovalWorkFlowChecker("nameSpaceWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW, "onboardingWorkFlowCheck");
+    MockApprovalWorkFlowCheckerTask gateTwo() {
+    	return new MockApprovalWorkFlowCheckerTask("nameSpaceWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW, "onboardingWorkFlowCheck");
     }
     
     @Bean(name = "onboardingWorkFlowCheckWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW)
-    WorkFlow onboardingWorkFlowCheckWorkFlow(@Qualifier("onboardingWorkFlowCheck") MockApprovalWorkFlowChecker gateTwo) {
+    WorkFlow onboardingWorkFlowCheckWorkFlow(@Qualifier("onboardingWorkFlowCheck") MockApprovalWorkFlowCheckerTask gateTwo) {
         return SequentialFlow.Builder
         		.aNewSequentialFlow()
         		.named( "onboardingWorkFlowCheckWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW)
@@ -159,12 +158,12 @@ public class ComplexWorkFlowConfiguration {
     //Start namespaceWorkFlowCheck Logic
     
     @Bean(name = "namespaceWorkFlowCheck")
-    MockApprovalWorkFlowChecker gateThree() {
-    	return new MockApprovalWorkFlowChecker("networkingWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW, "namespaceWorkFlowCheck");
+    MockApprovalWorkFlowCheckerTask gateThree() {
+    	return new MockApprovalWorkFlowCheckerTask("networkingWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW, "namespaceWorkFlowCheck");
     }
     
     @Bean(name = "namespaceWorkFlowCheckWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW)
-    WorkFlow namespaceWorkFlowCheckWorkFlow(@Qualifier("namespaceWorkFlowCheck") MockApprovalWorkFlowChecker gateThree) {
+    WorkFlow namespaceWorkFlowCheckWorkFlow(@Qualifier("namespaceWorkFlowCheck") MockApprovalWorkFlowCheckerTask gateThree) {
         return SequentialFlow.Builder
         		.aNewSequentialFlow()
         		.named( "namespaceWorkFlowCheckWorkFlow" + WorkFlowConstants.INFRASTRUCTURE_WORKFLOW)

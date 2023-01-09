@@ -99,7 +99,6 @@ public class WorkFlowTaskExecutionAspect {
                 report.getStatus().equals(WorkStatus.COMPLETED) ? Status.SUCCESS : Status.FAILED,
                 false, false);
         return report;
-
     }
 
     /**

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.consts;
 
 /**
  * Represent Keys that can be put into the WorkContext to get out specific values that might be used by WorkFlowService or WorkFlowEngine implementations

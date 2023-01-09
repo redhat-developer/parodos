@@ -62,9 +62,7 @@ public class InfrastructureOptions {
 	public void setCurrentVersion(InfrastructureOption currentVersion) {
 		this.currentVersion = currentVersion;
 	}
-	
-	
-	
+
 	/**
 	 * Add a Continuation Options
 	 * 
@@ -81,8 +79,7 @@ public class InfrastructureOptions {
 	public void setContinuationOptions(List<InfrastructureOption> continuationOptions) {
 		this.continuationOptions = continuationOptions;
 	}
-	
-	
+
 	/**
 	 * Add an Upgrade option to the existing upgrade Options
 	 * 
@@ -159,7 +156,6 @@ public class InfrastructureOptions {
 	 */
 	public static class Builder {
 		private InfrastructureOption currentVersion;
-		
 		private List<InfrastructureOption> upgradeOptions = new ArrayList<InfrastructureOption>();
 		private List<InfrastructureOption> migrationOptions = new ArrayList<InfrastructureOption>();
 		private List<InfrastructureOption> newOptions = new ArrayList<InfrastructureOption>();

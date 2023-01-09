@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.dto;
 
 import java.util.Map;
 import lombok.Builder;
@@ -27,10 +27,8 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class WorkFlowCheckResponseDto {
-	
+public class WorkFlowCheckResponseDTO {
 	private boolean readyToRun;
 	private String nextWorkFlowToRun;
 	private Map<String,String> argumentsForNextWorkFlow;
-
 }

@@ -16,13 +16,12 @@
 package com.redhat.parodos.examples.simple;
 
 import java.util.List;
-import java.util.UUID;
 
-import com.redhat.parodos.workflows.BaseInfrastructureWorkFlowTask;
-import com.redhat.parodos.workflows.MissingParameterException;
+import com.redhat.parodos.infrastructure.BaseInfrastructureWorkFlowTask;
+import com.redhat.parodos.workflows.task.MissingParameterException;
 import com.redhat.parodos.workflows.WorkContextDelegate;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
-import com.redhat.parodos.workflows.WorkFlowTaskParameterType;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameterType;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;

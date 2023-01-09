@@ -15,8 +15,8 @@
  */
 package com.redhat.parodos.examples.simple;
 
-import com.redhat.parodos.workflows.BaseInfrastructureWorkFlowTask;
-import com.redhat.parodos.workflows.WorkFlowConstants;
+import com.redhat.parodos.infrastructure.BaseInfrastructureWorkFlowTask;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;

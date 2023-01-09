@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import lombok.Builder;
 import lombok.Data;
@@ -26,10 +26,8 @@ import lombok.Data;
 @Data
 @Builder
 public class WorkFlowTaskParameter {
-	
 	private String key;
 	private String description;
 	private boolean optional;
 	private WorkFlowTaskParameterType type;
-
 }

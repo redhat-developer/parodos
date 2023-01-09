@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.redhat.parodos.workflows.work.Work;
 
 /**
@@ -26,7 +27,6 @@ import com.redhat.parodos.workflows.work.Work;
  *
  */
 public interface WorkFlowTask extends Work {
-	
 	default List<WorkFlowTaskParameter> getWorkFlowTaskParameters() {
 		return new ArrayList<>();
 	}

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import lombok.Getter;
 
@@ -25,22 +25,21 @@ import java.util.Map;
  * @author Luke Shannon (Github: lshannon)
  *
  */
-public abstract class BaseWorkFlowChecker implements WorkFlowChecker {
-	
+public abstract class BaseWorkFlowCheckerTask implements WorkFlowCheckerTask {
 	String nextWorkFlowId;
 	Map<String,String> nextWorkFlowArguments;
 
 	@Getter
 	private final String name;
 
-	public BaseWorkFlowChecker(String nextWorkFlowId, Map<String, String> nextWorkFlowArguments, String name) {
+	public BaseWorkFlowCheckerTask(String nextWorkFlowId, Map<String, String> nextWorkFlowArguments, String name) {
 		super();
 		this.name = name;
 		this.nextWorkFlowId = nextWorkFlowId;
 		this.nextWorkFlowArguments = nextWorkFlowArguments;
 	}
 	
-	public BaseWorkFlowChecker(String nextWorkFlowId, String name) {
+	public BaseWorkFlowCheckerTask(String nextWorkFlowId, String name) {
 		super();
 		this.nextWorkFlowId = nextWorkFlowId;
 		this.name = name;

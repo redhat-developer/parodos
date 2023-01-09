@@ -20,10 +20,10 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.redhat.parodos.workflows.BaseInfrastructureWorkFlowTask;
+import com.redhat.parodos.infrastructure.BaseInfrastructureWorkFlowTask;
 import com.redhat.parodos.workflows.WorkContextDelegate;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
-import com.redhat.parodos.workflows.WorkFlowTaskParameterType;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameterType;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;

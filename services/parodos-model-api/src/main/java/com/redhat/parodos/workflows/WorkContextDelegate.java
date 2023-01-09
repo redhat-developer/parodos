@@ -15,6 +15,7 @@
  */
 package com.redhat.parodos.workflows;
 
+import com.redhat.parodos.workflows.task.MissingParameterException;
 import com.redhat.parodos.workflows.work.WorkContext;
 
 /**
@@ -27,7 +28,6 @@ import com.redhat.parodos.workflows.work.WorkContext;
 public class WorkContextDelegate {
 	
 	private WorkContextDelegate() {
-		
 	}
 	
 	/**
@@ -46,8 +46,7 @@ public class WorkContextDelegate {
         }
         return (String) workContext.get(key);
     }
-	
-	
+
 	/**
 	 * Gets a String value from the WorkContext
 	 * 
@@ -62,5 +61,4 @@ public class WorkContextDelegate {
         }
         return (String) workContext.get(key);
     }
-
 }

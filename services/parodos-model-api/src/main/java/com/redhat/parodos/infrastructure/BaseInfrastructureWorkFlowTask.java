@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows.task;
+package com.redhat.parodos.infrastructure;
 
+import com.redhat.parodos.workflows.task.WorkFlowTask;
 import com.redhat.parodos.workflows.workflow.WorkFlow;
 import lombok.Getter;
 
