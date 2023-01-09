@@ -17,7 +17,7 @@ package com.redhat.parodos.workflow;
 
 import java.util.List;
 
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.WorkReport;
 
 /**

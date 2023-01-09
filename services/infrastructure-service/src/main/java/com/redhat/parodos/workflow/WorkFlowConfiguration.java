@@ -20,8 +20,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class WorkFlowConfiguration {
-	
-	
 	@Bean
 	WorkFlowDelegate workFlowDelegate(BeanWorkFlowRegistryImpl beanWorkFlowRegistryImpl) {
 		return new WorkFlowDelegate(beanWorkFlowRegistryImpl);

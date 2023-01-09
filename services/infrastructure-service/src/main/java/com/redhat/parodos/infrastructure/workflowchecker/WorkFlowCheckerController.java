@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.redhat.parodos.workflows.WorkFlowCheckResponseDto;
-import com.redhat.parodos.workflows.WorkFlowConstants;
+import com.redhat.parodos.workflows.dto.WorkFlowCheckResponseDTO;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
 import com.redhat.parodos.workflows.work.WorkReport;
 import com.redhat.parodos.workflows.work.WorkStatus;
 
@@ -52,16 +52,16 @@ public class WorkFlowCheckerController {
 	 */
 	@SuppressWarnings("unchecked")
 	@GetMapping("/{id}")
-    public ResponseEntity<WorkFlowCheckResponseDto> executeChecker(@PathVariable String id) {
+    public ResponseEntity<WorkFlowCheckResponseDTO> executeChecker(@PathVariable String id) {
 		WorkReport report = workFlowCheckerService.execute(id);
 		if (report.getStatus().equals(WorkStatus.COMPLETED)) {
-			return ResponseEntity.ok(WorkFlowCheckResponseDto.builder()
+			return ResponseEntity.ok(WorkFlowCheckResponseDTO.builder()
 					.nextWorkFlowToRun((String)report.getWorkContext().get(WorkFlowConstants.NEXT_WORKFLOW_ID))
 					.readyToRun(true)
 					.argumentsForNextWorkFlow((Map<String,String>)report.getWorkContext().get(WorkFlowConstants.NEXT_WORKFLOW_ARGUMENTS))
 					.build());
 		}
-		return ResponseEntity.ok(WorkFlowCheckResponseDto.builder().nextWorkFlowToRun((String)report.getWorkContext().get(WorkFlowConstants.NEXT_WORKFLOW_ID)).readyToRun(false).build());
+		return ResponseEntity.ok(WorkFlowCheckResponseDTO.builder().nextWorkFlowToRun((String)report.getWorkContext().get(WorkFlowConstants.NEXT_WORKFLOW_ID)).readyToRun(false).build());
     }
 
 }

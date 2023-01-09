@@ -22,9 +22,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import com.redhat.parodos.workflow.execution.transaction.WorkFlowTransactionDTO;
-import com.redhat.parodos.workflows.WorkFlowExecuteRequestDto;
-import com.redhat.parodos.workflows.WorkFlowTask;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.dto.WorkFlowExecuteRequestDTO;
+import com.redhat.parodos.workflows.task.WorkFlowTask;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.workflow.WorkFlow;
 
@@ -36,7 +36,6 @@ import com.redhat.parodos.workflows.workflow.WorkFlow;
  */
 @Component
 public class WorkFlowDelegate {
-	
 	private static final String WORK_UNITS = "workUnits";
 	private final BeanWorkFlowRegistryImpl workFlowRegistry;
 
@@ -74,7 +73,7 @@ public class WorkFlowDelegate {
 		return new ArrayList<>();
 	}
 	
-	public WorkContext getWorkContextWithParameters(WorkFlowExecuteRequestDto workFlowRequestDto) {
+	public WorkContext getWorkContextWithParameters(WorkFlowExecuteRequestDTO workFlowRequestDto) {
 		WorkContext context = new WorkContext();
 		//a workflow might run with no parameters
 		if (workFlowRequestDto.getWorkFlowParameters() != null && workFlowRequestDto.getWorkFlowParameters().keySet() != null) {

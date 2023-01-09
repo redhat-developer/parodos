@@ -47,5 +47,8 @@ public class MockApprovalWorkFlowChecker extends BaseWorkFlowChecker {
 		return new DefaultWorkReport(WorkStatus.COMPLETED, context);
 	}
 
-
+	@Override
+	public String getCronExpression() {
+		return "0 0/1 * * * ?";
+	}
 }

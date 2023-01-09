@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import com.redhat.parodos.infrastructure.option.InfrastructureOption;
 import lombok.Getter;
@@ -43,5 +43,4 @@ public abstract class BaseAssessmentTask implements WorkFlowTask {
 	public InfrastructureOption getInfrastructureOptions() {
 		return infrastructureOptions;
 	}
-	
 }

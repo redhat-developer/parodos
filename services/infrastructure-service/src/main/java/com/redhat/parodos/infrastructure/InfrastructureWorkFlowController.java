@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowExecuteRequestDto;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.dto.WorkFlowExecuteRequestDTO;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.WorkReport;
 import com.redhat.parodos.workflows.workflow.ParallelFlowReport;
 
@@ -58,7 +58,7 @@ public class InfrastructureWorkFlowController {
      */
     @SuppressWarnings("unchecked")
 	@PostMapping("/")
-    public ResponseEntity<UUID> executeWorkFlow(@RequestBody WorkFlowExecuteRequestDto workFlowExecuteRequestDto) {
+    public ResponseEntity<UUID> executeWorkFlow(@RequestBody WorkFlowExecuteRequestDTO workFlowExecuteRequestDto) {
     	WorkReport report = infrastructureWorkFlowService.execute(workFlowExecuteRequestDto);
     	if (report != null) {
     		if (report instanceof ParallelFlowReport) {

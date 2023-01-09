@@ -53,7 +53,9 @@ public abstract class BaseWorkFlowChecker implements WorkFlowChecker {
 	public Map<String, String> getNextWorkFlowArguments() {
 		return nextWorkFlowArguments;
 	}
-	
-	
 
+	@Override
+	public void run() {
+		System.out.println("Running workflow checker on schedule: " + getCronExpression());
+	}
 }

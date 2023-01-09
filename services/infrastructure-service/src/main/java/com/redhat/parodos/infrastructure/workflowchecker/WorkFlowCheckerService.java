@@ -25,8 +25,8 @@ import com.redhat.parodos.workflow.WorkFlowEngine;
 import com.redhat.parodos.workflow.WorkFlowService;
 import com.redhat.parodos.workflow.execution.transaction.WorkFlowTransactionDTO;
 import com.redhat.parodos.workflow.execution.transaction.WorkTransactionService;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;
 import com.redhat.parodos.workflows.work.WorkStatus;
@@ -91,5 +91,4 @@ public class WorkFlowCheckerService implements WorkFlowService<String> {
     public Collection<String> getInfrastructureTaskWorkFlows(String workFlowType) {
     	return workFlowDelegate.getWorkFlowIdsByWorkFlowType(workFlowType);
     }
-
 }

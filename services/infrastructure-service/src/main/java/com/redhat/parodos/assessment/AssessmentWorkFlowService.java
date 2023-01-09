@@ -22,9 +22,9 @@ import com.redhat.parodos.workflow.BeanWorkFlowRegistryImpl;
 import com.redhat.parodos.workflow.WorkFlowDelegate;
 import com.redhat.parodos.workflow.WorkFlowEngine;
 import com.redhat.parodos.workflow.WorkFlowService;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowExecuteRequestDto;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.dto.WorkFlowExecuteRequestDTO;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;
@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class AssessmentWorkFlowService implements WorkFlowService<WorkFlowExecuteRequestDto> {
+public class AssessmentWorkFlowService implements WorkFlowService<WorkFlowExecuteRequestDTO> {
 	
     private static final String ASSESSMENT = "ASSESSMENT";
 	private final WorkFlowEngine workFlowEngine;
@@ -52,7 +52,7 @@ public class AssessmentWorkFlowService implements WorkFlowService<WorkFlowExecut
     }
     
     @Override
-    public WorkReport execute(WorkFlowExecuteRequestDto workFlowRequestDto) {
+    public WorkReport execute(WorkFlowExecuteRequestDTO workFlowRequestDto) {
         WorkContext context = workFlowDelegate.getWorkContextWithParameters(workFlowRequestDto);
         context.put(WorkFlowConstants.WORKFLOW_TYPE, ASSESSMENT);
         WorkFlow assessmentWorkFlow = workFlowDelegate.getWorkFlowById(workFlowRequestDto.getWorkFlowId());

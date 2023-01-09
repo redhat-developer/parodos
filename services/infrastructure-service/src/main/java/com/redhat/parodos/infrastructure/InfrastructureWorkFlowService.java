@@ -22,9 +22,9 @@ import com.redhat.parodos.workflow.BeanWorkFlowRegistryImpl;
 import com.redhat.parodos.workflow.WorkFlowDelegate;
 import com.redhat.parodos.workflow.WorkFlowEngine;
 import com.redhat.parodos.workflow.WorkFlowService;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowExecuteRequestDto;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.dto.WorkFlowExecuteRequestDTO;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;
@@ -40,9 +40,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
-public class InfrastructureWorkFlowService implements WorkFlowService<WorkFlowExecuteRequestDto> {
-	
-	
+public class InfrastructureWorkFlowService implements WorkFlowService<WorkFlowExecuteRequestDTO> {
     private static final String INFRASTRUCTURE = "INFRASTRUCTURE";
 	private final WorkFlowEngine workFlowEngine;
     private final WorkFlowDelegate workFlowDelegate;
@@ -59,7 +57,7 @@ public class InfrastructureWorkFlowService implements WorkFlowService<WorkFlowEx
      * @return ExistingInfrastructureDto containing the data from the persisted entity
      */
     @Override
-    public WorkReport execute(WorkFlowExecuteRequestDto requestDetails) {
+    public WorkReport execute(WorkFlowExecuteRequestDTO requestDetails) {
         WorkFlow workflow = workFlowDelegate.getWorkFlowById(requestDetails.getWorkFlowId());
         if (workflow == null) {
             log.error("{} is not a registered InfrastructureTaskWorkFlow. Returning null", requestDetails.getWorkFlowId());
@@ -83,7 +81,7 @@ public class InfrastructureWorkFlowService implements WorkFlowService<WorkFlowEx
 	 * @return the WorkReport which contains the WorkContext
 	 * 
 	 */
-    private WorkReport executeOptionTasks(WorkFlow workFlow, WorkFlowExecuteRequestDto requestDetails) {
+    private WorkReport executeOptionTasks(WorkFlow workFlow, WorkFlowExecuteRequestDTO requestDetails) {
     	WorkContext workContext = workFlowDelegate.getWorkContextWithParameters(requestDetails);
     	workContext.put(WorkFlowConstants.WORKFLOW_TYPE, INFRASTRUCTURE);
     	WorkReport report = workFlowEngine.executeWorkFlows(workContext, workFlow);

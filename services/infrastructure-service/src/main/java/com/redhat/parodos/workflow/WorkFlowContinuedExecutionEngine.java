@@ -17,7 +17,7 @@ package com.redhat.parodos.workflow;
 
 import com.redhat.parodos.workflow.execution.Status;
 import com.redhat.parodos.workflow.execution.transaction.WorkFlowTransactionRepository;
-import com.redhat.parodos.workflows.WorkFlowConstants;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.workflow.WorkFlow;
 import lombok.extern.slf4j.Slf4j;

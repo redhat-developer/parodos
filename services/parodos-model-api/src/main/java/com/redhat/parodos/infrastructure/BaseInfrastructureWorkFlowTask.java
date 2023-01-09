@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.redhat.parodos.workflows;
+package com.redhat.parodos.workflows.task;
 
 import com.redhat.parodos.workflows.workflow.WorkFlow;
 import lombok.Getter;
@@ -46,5 +46,4 @@ public abstract class BaseInfrastructureWorkFlowTask implements WorkFlowTask {
 	public BaseInfrastructureWorkFlowTask(String name) {
 		this.name = name;
 	}
-	
 }

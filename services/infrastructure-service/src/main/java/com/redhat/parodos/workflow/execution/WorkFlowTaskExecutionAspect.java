@@ -18,8 +18,9 @@ package com.redhat.parodos.workflow.execution;
 import com.redhat.parodos.workflow.execution.transaction.TaskTransactionEntity;
 import com.redhat.parodos.workflow.execution.transaction.WorkFlowTransactionEntity;
 import com.redhat.parodos.workflow.execution.transaction.WorkTransactionService;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowTask;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.task.WorkFlowCheckerTask;
+import com.redhat.parodos.workflows.task.WorkFlowTask;
 import com.redhat.parodos.workflows.work.DefaultWorkReport;
 import com.redhat.parodos.workflows.work.WorkContext;
 import com.redhat.parodos.workflows.work.WorkReport;
@@ -44,17 +45,19 @@ import java.time.OffsetDateTime;
 @Component
 @Slf4j
 public class WorkFlowTaskExecutionAspect {
-	
+    private final WorkFlowCheckerTaskScheduler workFlowCheckerTaskScheduler;
     private final WorkTransactionService workTransactionService;
 
-    public WorkFlowTaskExecutionAspect(WorkTransactionService workTransactionService) {
+    public WorkFlowTaskExecutionAspect(WorkTransactionService workTransactionService,
+                                       WorkFlowCheckerTaskScheduler workFlowCheckerTaskScheduler) {
         this.workTransactionService = workTransactionService;
+        this.workFlowCheckerTaskScheduler = workFlowCheckerTaskScheduler;
     }
 
     /**
      * the "execute()" method of all subclasses of WorkFlowTask are targeted
      */
-    @Pointcut("execution(* com.redhat.parodos.workflows.WorkFlowTask+.execute(..))")
+    @Pointcut("execution(* com.redhat.parodos.workflows.task.WorkFlowTask+.execute(..))")
     public void pointcutScope() {
     }
 
@@ -69,7 +72,11 @@ public class WorkFlowTaskExecutionAspect {
             "pointcutScope() && args(workContext)"
     )
     public WorkReport executeAroundAdvice(ProceedingJoinPoint proceedingJoinPoint, WorkContext workContext) {
-    	//A WorkFlowTransactionEntity might have multiple WorkFlowTasks of the same type - need to get the name of the specific one that needs to be processed
+    	// A WorkFlowTransactionEntity might have multiple WorkFlowTasks of the same type - need to get the name of the specific one that needs to be processed
+        if (proceedingJoinPoint.getTarget() instanceof WorkFlowCheckerTask) {
+            WorkFlowCheckerTask workFlowCheckerTask = (WorkFlowCheckerTask)proceedingJoinPoint.getTarget();
+            workFlowCheckerTaskScheduler.schedule(workFlowCheckerTask.getName(), workFlowCheckerTask, workFlowCheckerTask.getCronExpression());
+        }
         String targetedTaskName = ((WorkFlowTask)proceedingJoinPoint.getTarget()).getName();
         WorkFlowTransactionEntity workFlowTransactionEntity = workTransactionService.getWorkFlowTransactionEntity(String.valueOf(workContext.get(WorkFlowConstants.WORKFLOW_EXECUTION_ENTITY_REFERENCES)));
         log.info("Before invoking execute() on task: {}", targetedTaskName);

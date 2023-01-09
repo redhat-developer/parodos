@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.redhat.parodos.infrastructure.option.InfrastructureOptions;
-import com.redhat.parodos.workflows.WorkFlowConstants;
-import com.redhat.parodos.workflows.WorkFlowExecuteRequestDto;
-import com.redhat.parodos.workflows.WorkFlowTaskParameter;
+import com.redhat.parodos.workflows.consts.WorkFlowConstants;
+import com.redhat.parodos.workflows.dto.WorkFlowExecuteRequestDTO;
+import com.redhat.parodos.workflows.task.WorkFlowTaskParameter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,7 +57,7 @@ public class AssessmentWorkFlowController {
 	 * @return InfrastructureOptions containing details on the current Infrastructure and any upgrade, migration or new infrastructure options
 	 */
 	@PostMapping("/")
-	public ResponseEntity<InfrastructureOptions> assessApplication(@RequestBody WorkFlowExecuteRequestDto workFlowExecuteRequestDto) {
+	public ResponseEntity<InfrastructureOptions> assessApplication(@RequestBody WorkFlowExecuteRequestDTO workFlowExecuteRequestDto) {
 		log.debug("Running a Assessment using AssessmentRequest: {}", workFlowExecuteRequestDto.toString());
 		return ResponseEntity.ok((InfrastructureOptions)assessmentWorkFlowService.execute(workFlowExecuteRequestDto).getWorkContext().get(WorkFlowConstants.RESULTING_INFRASTRUCTURE_OPTIONS));
 	}

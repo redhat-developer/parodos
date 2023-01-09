@@ -25,7 +25,7 @@ import com.redhat.parodos.workflows.work.WorkReport;
  * @author Luke Shannon (Github: lshannon)
  *
  */
-public interface WorkFlowChecker extends WorkFlowTask  {
+public interface WorkFlowChecker extends WorkFlowTask, Runnable  {
 	
 	/**
 	 * Method to check if a WorkFlow that is in a holding status, i.e: waiting for an external process to occur, has achieved its status and can trigger the next WorkFlow
@@ -38,11 +38,9 @@ public interface WorkFlowChecker extends WorkFlowTask  {
 	 /**
 	  * By default, if no execute method is defined, the checkWorkFlowStatus method will be executed by the WorkFlow engine
 	  */
-	public default WorkReport execute(WorkContext workContext) {
+	 default WorkReport execute(WorkContext workContext) {
 		return checkWorkFlowStatus(workContext);
 	}
 
-	 
-	 
-
+	String getCronExpression();
 }

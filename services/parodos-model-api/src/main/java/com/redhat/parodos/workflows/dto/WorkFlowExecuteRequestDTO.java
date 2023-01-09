@@ -27,7 +27,6 @@ import lombok.Data;
 
 @Data
 public class WorkFlowExecuteRequestDto {
-	
     private Map<String,String> workFlowParameters;
     private String workFlowId;
 }

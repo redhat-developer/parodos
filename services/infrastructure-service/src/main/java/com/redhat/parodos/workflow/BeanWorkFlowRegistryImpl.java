@@ -37,7 +37,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class BeanWorkFlowRegistryImpl implements WorkFlowRegistry<String> {
-    
 	//Spring will populate this through classpath scanning when the Context starts up
 	private final Map<String,WorkFlow> workFlows;
 
